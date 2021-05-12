@@ -1,5 +1,6 @@
 package com.example.mvvmtvshows.network;
 
+import com.example.mvvmtvshows.responses.TVShowDetailsResponse;
 import com.example.mvvmtvshows.responses.TVShowResponse;
 
 import retrofit2.Call;
@@ -10,4 +11,7 @@ public interface ApiService {
 
     @GET("most-popular")
     Call<TVShowResponse> getMostPopularTVShows(@Query("page") int page);
+
+    @GET("show-details")
+    Call<TVShowDetailsResponse> getTVShowDetails(@Query("q") String tvShowId);
 }
