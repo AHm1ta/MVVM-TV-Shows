@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="tvShow"
+            type="com.example.mvvmtvshows.model.TVShow" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <View
+            android:id="@+id/viewSupporter"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageTVShow" />
+
+        <View
+            android:id="@+id/viewBackground"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/background_tv_show"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textName" />
+
+        <ImageView
+            android:id="@+id/imageTVShow"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
+            android:imageURL="@{tvShow.imageThumbnailPath}"
+            app:layout_constraintCircleRadius="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="20dp"
+            android:paddingTop="5dp"
+            android:fontFamily="sans-serif-medium"
+            android:includeFontPadding="false"
+            android:text="@{tvShow.name}"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageTVShow"
+            app:layout_constraintTop_toTopOf="@id/imageTVShow" />
+
+        <TextView
+            android:id="@+id/textNetwork"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:includeFontPadding="false"
+            android:text='@{tvShow.network + "(" + tvShow.country + ")"}'
+            android:textColor="@color/colorTextOther"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/textName"
+            app:layout_constraintStart_toStartOf="@id/textName"
+            app:layout_constraintEnd_toEndOf="@id/textName" />
+
+        <TextView
+            android:id="@+id/textStarted"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:includeFontPadding="false"
+            android:text='@{"Started on: " + tvShow.startDate}'
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/textNetwork"
+            app:layout_constraintStart_toStartOf="@id/textName"
+            app:layout_constraintEnd_toEndOf="@id/textName" />
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif"
+            android:includeFontPadding="false"
+            android:text="@{tvShow.status}"
+            android:textColor="#EDD96F"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/textStarted"
+            app:layout_constraintStart_toStartOf="@id/textName"
+            app:layout_constraintEnd_toEndOf="@id/textName" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
