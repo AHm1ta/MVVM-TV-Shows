@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.mvvmtvshows.R;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
                 }
             }
         });
+        activityMainBinding.imageWatchList.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(),WatchlistActivity.class)));
+        activityMainBinding.imageSearch.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), SearchActivity.class)));
         getMostPopularTVShows();
     }
 
@@ -88,12 +91,13 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
     @Override
     public void onTVShowClicked(TVShow tvShow) {
         Intent intent = new Intent(getApplicationContext(), TVShowDetailsActivity.class);
-        intent.putExtra("id", tvShow.getId());
-        intent.putExtra("name", tvShow.getName());
-        intent.putExtra("startDate", tvShow.getStartDate());
-        intent.putExtra("country", tvShow.getCountry());
-        intent.putExtra("network", tvShow.getNetwork());
-        intent.putExtra("status", tvShow.getStatus());
+        intent.putExtra("tvShow", tvShow);
+//        intent.putExtra("id", tvShow.getId());
+//        intent.putExtra("name", tvShow.getName());
+//        intent.putExtra("startDate", tvShow.getStartDate());
+//        intent.putExtra("country", tvShow.getCountry());
+//        intent.putExtra("network", tvShow.getNetwork());
+//        intent.putExtra("status", tvShow.getStatus());
         startActivity(intent);
     }
 }
